@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header-ui></header-ui>
+    <el-container>
+      <el-main>
+        <transition name="el-zoom-in-top" mode="out-in">
+          <router-view/>
+        </transition>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderUi from './components/HeaderUi.vue'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+  components: { HeaderUi },
 }
 </script>
 
@@ -23,6 +26,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
