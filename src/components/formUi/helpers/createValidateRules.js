@@ -1,17 +1,14 @@
 export default function(arr) {
     const rules = {};
-
     arr.forEach((field) => {
         const validation = field.validation;
         rules[field.code] = validation ? getRule(validation) : []
     });
-
     return rules;
 }
 
 function getRule(validation) {
     let ruleArr = [];
-
     for(let key in validation){
         if(validation[key]){
             switch(key){
@@ -39,6 +36,5 @@ function getRule(validation) {
             }
         }
     }
-
     return ruleArr;
 }

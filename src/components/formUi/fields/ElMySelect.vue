@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import sortingEnumEl from '../modules/sortingEnumElements.js'
+import sortingEnumEl from '../helpers/sortingEnumElements.js'
 
 export default {
     name: "ElMySelect",
@@ -22,11 +22,9 @@ export default {
         },
         value: {}
     },
-    data() {
-        return {
-            options: [],
-        }
-    },
+    data: () => ({
+        options: [],
+    }),
     computed: {
         localValue: {
             get() {

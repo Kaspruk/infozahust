@@ -7,7 +7,6 @@
             label-position="left"
             label-width="170px">
         <el-row v-for="(field, index) in fields.attributes" :key="index">
-
             <template v-if="!field.multiple">
                 <el-form-item
                         :label="field.title"
@@ -17,13 +16,11 @@
                         :is="getComponentName(field.type).name"
                         v-model="formData[field.code]"
                         :field="field"
-                        :type="getComponentName(field.type).type">
-                    </component>
+                        :type="getComponentName(field.type).type" />
                 </el-form-item>
             </template>
-
             <transition-group v-else name="el-zoom-in-top" mode="out-in" >
-                <el-row type="flex" justify="end"  v-for="(element, index) in formData[field.code]" :key="index">
+                <el-row type="flex" justify="end" v-for="(element, index) in formData[field.code]" :key="index">
                     <el-col>
                         <el-form-item
                                 :label="`${!index ? field.title : ''}`"
@@ -31,15 +28,13 @@
                                 :rules="rules[field.code]">
                             <component
                                 :is="getComponentName(field.type).name"
-                                v-model="formData[field.code][index]">
-                            </component>
+                                v-model="formData[field.code][index]" />
                         </el-form-item>
                     </el-col>
-                    <el-button v-if="index === 0" type="success" @click="addNewItem(field.code)">+</el-button>
+                    <el-button v-if="!index" type="success" @click="addNewItem(field.code)">+</el-button>
                     <el-button v-else type="danger" @click="deleteNewItem(field.code, index)">-</el-button>
                 </el-row>
             </transition-group>
-
         </el-row>
         <el-button type="success" @click="submitForm()">Відправити</el-button>
     </el-form>
@@ -48,7 +43,7 @@
 <script>
 import ElMySelect from './fields/ElMySelect.vue'
 
-import createValidateRules from './modules/createValidateRules'
+import createValidateRules from './helpers/createValidateRules'
 
 export default {
     name: "FormUi",
@@ -59,12 +54,10 @@ export default {
             default: null,
         }
     },
-    data(){
-        return {
-            formData: {},
-            rules: {}
-        }
-    },
+    data: () => ({
+        formData: {},
+        rules: {}
+    }),
     methods: {
         createFormDataKeys() {
             this.fields.attributes.forEach((f) => {

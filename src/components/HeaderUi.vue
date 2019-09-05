@@ -12,7 +12,3 @@
         name: "HeaderUi"
     }
 </script>
-
-<style scoped>
-
-</style>

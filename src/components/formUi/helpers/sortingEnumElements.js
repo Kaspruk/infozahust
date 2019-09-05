@@ -1,10 +1,8 @@
 export default function (arr) {
     let newArr = [];
-
     arr.forEach((p) => {
         if(!p.parentId) newArr = [...newArr, ...getSameElById(p, arr)]
     });
-
     return newArr;
 }
 
