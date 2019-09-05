@@ -84,7 +84,7 @@ export default {
         submitForm() {
             this.$refs['form'].validate((valid) => {
                 if (valid) {
-                    this.$store.commit('setFormData', this.formData);
+                    this.$store.commit('setFormData', JSON.stringify(this.formData));
                     this.$router.push({ name: 'result' })
                 } else {
                     return false;
